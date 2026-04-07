@@ -60,7 +60,7 @@ body{background:#6B2340;height:100vh;height:100dvh;overflow:hidden;font-family:"
     <div class="reveal-item" id="messaggio"><div class="messaggio-auguri" id="messaggioAuguri"></div></div>
     <div class="reveal-item" id="cerchio">
       <div class="gocce-cerchio">
-        <div class="gocce-numero">+30</div>
+        <div class="gocce-numero" id="gocceBonus">+30</div>
         <div class="gocce-testo" id="gocceTesto"></div>
         <div class="gocce-posttesto" id="goccePosttesto"></div>
       </div>
@@ -74,6 +74,7 @@ var params = new URLSearchParams(window.location.search);
 var nome = params.get('nome') || 'Amico';
 var lingua = params.get('lang') || 'IT';
 var cardUrl = params.get('card') || '#';
+var bonus = params.get('gocce') || '30'; // <-- LEGGE IL BONUS (di base 30)
 
 var testi = {
   IT: { auguri:'Tanti auguri', msg:'Che questo giorno profumi<br>solo di cose belle!', gocce:'GOCCE', regalo:'In regalo!', btn:'Vedi la tua boccetta' },
@@ -85,6 +86,7 @@ document.getElementById('titoloAuguri').innerHTML = t.auguri + '<br>' + decodeUR
 document.getElementById('messaggioAuguri').innerHTML = t.msg;
 document.getElementById('gocceTesto').textContent = t.gocce;
 document.getElementById('goccePosttesto').textContent = t.regalo;
+document.getElementById('gocceBonus').textContent = '+' + bonus; // <-- IMPOSTA IL BONUS
 document.getElementById('linkCard').textContent = t.btn;
 document.getElementById('linkCard').href = decodeURIComponent(cardUrl);
 
